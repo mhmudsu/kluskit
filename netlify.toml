@@ -1,0 +1,22 @@
+[build]
+  # Build de Expo web export en kopieer de JS-bundles (dist/client) naar de HTML-map (dist/server)
+  command = "npx expo export --platform web && cp -r dist/client/. dist/server/"
+  publish = "dist/server"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[functions]
+  directory = "netlify/functions"
+
+# Stuur /api/materialen door naar de Netlify Function
+[[redirects]]
+  from = "/api/materialen"
+  to = "/.netlify/functions/materialen"
+  status = 200
+
+# SPA fallback: routes die niet bestaan als bestand → index.html (voor client-side navigatie)
+[[redirects]]
+  from = "/*"
+  to = "/:splat"
+  status = 200
