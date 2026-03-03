@@ -82,6 +82,15 @@ export interface GebruikersProfiel {
 }
 
 export type OfferteBtwType = '21%' | 'verlegd';
+export type OfferteWeergave = 'gespecificeerd' | 'vaste_prijs' | 'materiaal_arbeid';
+
+export interface Klant {
+  id: string;
+  naam: string;
+  adres?: string;
+  telefoon?: string;
+  email?: string;
+}
 
 export type FotoType = 'voor' | 'tijdens' | 'na' | 'analyse';
 
@@ -121,14 +130,20 @@ export interface Offerte {
   klantEmail: string;
   werkbeschrijving: string;
   materialen: Materiaal[];
-  totaalMateriaalkosten: number;
-  arbeidsUren: number;
+  totaalMateriaalkosten: number;    // inkoop
+  materiaalMarge: number;           // percentage, default 20
+  materiaalVerkoopprijs: number;    // inkoop + marge
+  arbeidsUren: number;              // basis uren (AI)
+  arbeidBuffer: number;             // percentage, default 20
   uurtarief: number;
   btwType: OfferteBtwType;
-  arbeidskosten: number;
+  isSpoed: boolean;
+  spoedtoeslag: number;
+  arbeidskosten: number;            // gebufferde uren * tarief
   subtotaal: number;
   btwBedrag: number;
   totaalInclBtw: number;
+  weergaveType: OfferteWeergave;
   bedrijfsProfiel: GebruikersProfiel;
   status: 'concept' | 'verzonden' | 'geaccepteerd' | 'afgewezen';
 }

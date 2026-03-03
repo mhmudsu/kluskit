@@ -39,7 +39,10 @@ export default function ProjectenScherm() {
                 />
                 <View style={stijlen.projectInfo}>
                   <Text style={stijlen.projectNaam}>{project.naam}</Text>
-                  <Text style={stijlen.projectType}>{getKlusLabel(project.klusType)}</Text>
+                  <Text style={stijlen.projectType}>
+                    {getKlusLabel(project.klusType)}
+                    {project.klantNaam ? ` · ${project.klantNaam}` : ''}
+                  </Text>
                 </View>
                 <View
                   style={[

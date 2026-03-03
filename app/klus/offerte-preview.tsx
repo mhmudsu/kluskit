@@ -167,45 +167,83 @@ export default function OffertePreviewScherm() {
 
           <View style={stijlen.documentDivider} />
 
-          {/* Materialen tabel */}
+          {/* Specificatie (afhankelijk van weergaveType) */}
           <View style={stijlen.sectieBlok}>
             <Text style={stijlen.sectieBlokLabel}>SPECIFICATIE</Text>
 
-            <View style={stijlen.tabelHeader}>
-              <Text style={[stijlen.tabelHeaderTekst, { flex: 3 }]}>Omschrijving</Text>
-              <Text style={[stijlen.tabelHeaderTekst, { flex: 1, textAlign: 'right' }]}>Aantal</Text>
-              <Text style={[stijlen.tabelHeaderTekst, { flex: 1.5, textAlign: 'right' }]}>Totaal</Text>
-            </View>
-
-            {o.materialen.map((m, i) => (
-              <View key={i} style={[stijlen.tabelRij, i % 2 === 0 && stijlen.tabelRijEven]}>
-                <View style={{ flex: 3 }}>
-                  <Text style={stijlen.tabelNaam}>{m.naam}</Text>
-                  <Text style={stijlen.tabelSpec} numberOfLines={1}>{m.specificatie}</Text>
+            {(o.weergaveType ?? 'gespecificeerd') === 'gespecificeerd' && (
+              <>
+                <View style={stijlen.tabelHeader}>
+                  <Text style={[stijlen.tabelHeaderTekst, { flex: 3 }]}>Omschrijving</Text>
+                  <Text style={[stijlen.tabelHeaderTekst, { flex: 1, textAlign: 'right' }]}>Aantal</Text>
+                  <Text style={[stijlen.tabelHeaderTekst, { flex: 1.5, textAlign: 'right' }]}>Totaal</Text>
                 </View>
-                <Text style={[stijlen.tabelWaarde, { flex: 1, textAlign: 'right' }]}>
-                  {m.hoeveelheid} {m.eenheid}
-                </Text>
-                <Text style={[stijlen.tabelWaarde, { flex: 1.5, textAlign: 'right' }]}>
-                  {formateerPrijs(m.totaalPrijs)}
-                </Text>
-              </View>
-            ))}
+                {o.materialen.map((m, i) => {
+                  const marge = o.materiaalMarge ?? 0;
+                  const verkoopPrijs = m.totaalPrijs * (1 + marge / 100);
+                  return (
+                    <View key={i} style={[stijlen.tabelRij, i % 2 === 0 && stijlen.tabelRijEven]}>
+                      <View style={{ flex: 3 }}>
+                        <Text style={stijlen.tabelNaam}>{m.naam}</Text>
+                        <Text style={stijlen.tabelSpec} numberOfLines={1}>{m.specificatie}</Text>
+                      </View>
+                      <Text style={[stijlen.tabelWaarde, { flex: 1, textAlign: 'right' }]}>
+                        {m.hoeveelheid} {m.eenheid}
+                      </Text>
+                      <Text style={[stijlen.tabelWaarde, { flex: 1.5, textAlign: 'right' }]}>
+                        {formateerPrijs(verkoopPrijs)}
+                      </Text>
+                    </View>
+                  );
+                })}
+                <View style={[stijlen.tabelRij, stijlen.tabelRijArbeid]}>
+                  <View style={{ flex: 3 }}>
+                    <Text style={stijlen.tabelNaam}>Arbeidskosten</Text>
+                    <Text style={stijlen.tabelSpec}>
+                      {((o.arbeidsUren ?? 0) * (1 + (o.arbeidBuffer ?? 0) / 100)).toFixed(1)} uur × €{o.uurtarief}/uur
+                      {o.isSpoed ? ' + spoedtoeslag' : ''}
+                    </Text>
+                  </View>
+                  <Text style={[stijlen.tabelWaarde, { flex: 1, textAlign: 'right' }]}>
+                    {((o.arbeidsUren ?? 0) * (1 + (o.arbeidBuffer ?? 0) / 100)).toFixed(1)} uur
+                  </Text>
+                  <Text style={[stijlen.tabelWaarde, { flex: 1.5, textAlign: 'right' }]}>
+                    {formateerPrijs(o.arbeidskosten + (o.spoedtoeslag ?? 0))}
+                  </Text>
+                </View>
+              </>
+            )}
 
-            <View style={[stijlen.tabelRij, stijlen.tabelRijArbeid]}>
-              <View style={{ flex: 3 }}>
-                <Text style={stijlen.tabelNaam}>Arbeidskosten</Text>
-                <Text style={stijlen.tabelSpec}>
-                  {o.arbeidsUren} uur × €{o.uurtarief}/uur
+            {(o.weergaveType ?? 'gespecificeerd') === 'materiaal_arbeid' && (
+              <>
+                <View style={stijlen.tabelRij}>
+                  <Text style={[stijlen.tabelNaam, { flex: 1 }]}>Materiaalkosten</Text>
+                  <Text style={[stijlen.tabelWaarde, { textAlign: 'right' }]}>
+                    {formateerPrijs(o.materiaalVerkoopprijs ?? o.totaalMateriaalkosten)}
+                  </Text>
+                </View>
+                <View style={[stijlen.tabelRij, stijlen.tabelRijArbeid]}>
+                  <Text style={[stijlen.tabelNaam, { flex: 1 }]}>
+                    Arbeidskosten{o.isSpoed ? ' (incl. spoedtoeslag)' : ''}
+                  </Text>
+                  <Text style={[stijlen.tabelWaarde, { textAlign: 'right' }]}>
+                    {formateerPrijs(o.arbeidskosten + (o.spoedtoeslag ?? 0))}
+                  </Text>
+                </View>
+              </>
+            )}
+
+            {(o.weergaveType ?? 'gespecificeerd') === 'vaste_prijs' && (
+              <View style={[stijlen.tabelRij, stijlen.tabelRijArbeid]}>
+                <View style={{ flex: 1 }}>
+                  <Text style={stijlen.tabelNaam}>{o.werkbeschrijving}</Text>
+                  <Text style={stijlen.tabelSpec}>Totaalprijs all-in</Text>
+                </View>
+                <Text style={[stijlen.tabelWaarde, { textAlign: 'right' }]}>
+                  {formateerPrijs(o.subtotaal)}
                 </Text>
               </View>
-              <Text style={[stijlen.tabelWaarde, { flex: 1, textAlign: 'right' }]}>
-                {o.arbeidsUren} uur
-              </Text>
-              <Text style={[stijlen.tabelWaarde, { flex: 1.5, textAlign: 'right' }]}>
-                {formateerPrijs(o.arbeidskosten)}
-              </Text>
-            </View>
+            )}
           </View>
 
           <View style={stijlen.documentDivider} />
@@ -214,11 +252,17 @@ export default function OffertePreviewScherm() {
           <View style={stijlen.kostenBlok}>
             <View style={stijlen.kostenRij}>
               <Text style={stijlen.kostenLabel}>Materiaalkosten</Text>
-              <Text style={stijlen.kostenWaarde}>{formateerPrijs(o.totaalMateriaalkosten)}</Text>
+              <Text style={stijlen.kostenWaarde}>
+                {formateerPrijs(o.materiaalVerkoopprijs ?? o.totaalMateriaalkosten)}
+              </Text>
             </View>
             <View style={stijlen.kostenRij}>
-              <Text style={stijlen.kostenLabel}>Arbeidskosten</Text>
-              <Text style={stijlen.kostenWaarde}>{formateerPrijs(o.arbeidskosten)}</Text>
+              <Text style={stijlen.kostenLabel}>
+                Arbeidskosten{o.isSpoed ? ' (incl. spoed)' : ''}
+              </Text>
+              <Text style={stijlen.kostenWaarde}>
+                {formateerPrijs(o.arbeidskosten + (o.spoedtoeslag ?? 0))}
+              </Text>
             </View>
             <View style={stijlen.kostenDividerDun} />
             <View style={stijlen.kostenRij}>
@@ -478,7 +522,7 @@ const stijlen = StyleSheet.create({
   },
   tabelRijEven: { backgroundColor: '#F2F4F5' },
   tabelRijArbeid: {
-    backgroundColor: '#FFF8F0',
+    backgroundColor: '#E8F8F0',
     borderBottomWidth: 0,
     borderRadius: 4,
     paddingHorizontal: 4,
@@ -507,7 +551,7 @@ const stijlen = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 10,
     paddingHorizontal: 12,
-    backgroundColor: '#FFF5EE',
+    backgroundColor: '#E8F8F0',
     borderRadius: 8,
   },
   totaalEindLabel: { fontSize: 16, fontWeight: '700', color: KLEUREN.text },
