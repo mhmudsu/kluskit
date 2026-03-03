@@ -140,12 +140,14 @@ const stijlen = StyleSheet.create({
   headerTekst: { fontSize: 16, fontWeight: '700', color: KLEUREN.text },
   offerteKaart: {
     backgroundColor: KLEUREN.white,
-    borderRadius: 14,
+    borderRadius: 16,
     padding: 16,
     marginBottom: 12,
-    borderWidth: 1,
-    borderColor: KLEUREN.border,
-    elevation: 1,
+    shadowColor: '#1B2631',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.06,
+    shadowRadius: 8,
+    elevation: 3,
   },
   kaartHeader: {
     flexDirection: 'row',

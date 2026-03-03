@@ -21,7 +21,7 @@ export default function KlusTypeSelector({ geselecteerd, onSelecteer }: Props) {
               key={klus.id}
               style={[
                 stijlen.tegel,
-                isActief && { borderColor: KLEUREN.primary, borderWidth: 2.5 },
+                isActief && { borderColor: KLEUREN.primary, borderWidth: 2, backgroundColor: '#E8F8F0' },
               ]}
               onPress={() => onSelecteer(klus.id)}
             >
@@ -69,11 +69,16 @@ const stijlen = StyleSheet.create({
   tegel: {
     width: '47%',
     backgroundColor: KLEUREN.white,
-    borderRadius: 14,
+    borderRadius: 16,
     padding: 14,
     borderWidth: 1.5,
     borderColor: KLEUREN.border,
     position: 'relative',
+    shadowColor: '#1B2631',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.06,
+    shadowRadius: 8,
+    elevation: 3,
   },
   icoonWrapper: {
     width: 52,

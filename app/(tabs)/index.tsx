@@ -20,7 +20,7 @@ export default function HomeScherm() {
       {/* Hoofdactie knop */}
       <Link href="/klus/invoer" asChild>
         <Pressable style={stijlen.hoofdKnop}>
-          <MaterialCommunityIcons name="plus-circle" size={32} color={KLEUREN.white} />
+          <MaterialCommunityIcons name="calculator-variant" size={32} color={KLEUREN.white} />
           <View style={stijlen.hoofdKnopTekst}>
             <Text style={stijlen.hoofdKnopTitel}>Nieuwe Klus Berekenen</Text>
             <Text style={stijlen.hoofdKnopSubtitel}>Materialenlijst in seconden</Text>
@@ -156,12 +156,12 @@ const stijlen = StyleSheet.create({
     padding: 20,
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 24,
+    marginBottom: 12,
     elevation: 4,
-    shadowColor: KLEUREN.primary,
+    shadowColor: '#1B2631',
     shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.3,
-    shadowRadius: 8,
+    shadowOpacity: 0.15,
+    shadowRadius: 10,
   },
   hoofdKnopTekst: {
     flex: 1,
@@ -216,12 +216,14 @@ const stijlen = StyleSheet.create({
   actieTegel: {
     flex: 1,
     backgroundColor: KLEUREN.white,
-    borderRadius: 12,
+    borderRadius: 16,
     padding: 16,
     alignItems: 'center',
-    borderWidth: 1,
-    borderColor: KLEUREN.border,
-    elevation: 1,
+    shadowColor: '#1B2631',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.06,
+    shadowRadius: 8,
+    elevation: 3,
   },
   actieTitelTekst: {
     fontSize: 12,
@@ -231,13 +233,16 @@ const stijlen = StyleSheet.create({
   },
   projectKaart: {
     backgroundColor: KLEUREN.white,
-    borderRadius: 12,
+    borderRadius: 16,
     padding: 16,
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 8,
-    borderWidth: 1,
-    borderColor: KLEUREN.border,
+    shadowColor: '#1B2631',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.06,
+    shadowRadius: 8,
+    elevation: 3,
   },
   projectInfo: {
     flex: 1,

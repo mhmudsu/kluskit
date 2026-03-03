@@ -322,15 +322,17 @@ const stijlen = StyleSheet.create({
     borderRadius: 16,
     padding: 16,
     marginBottom: 14,
-    borderWidth: 1,
-    borderColor: KLEUREN.border,
-    elevation: 1,
+    shadowColor: '#1B2631',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.06,
+    shadowRadius: 8,
+    elevation: 3,
   },
 
   // Samenvatting
   samenvattingKaart: {
-    backgroundColor: '#FFF3E0',
-    borderRadius: 14,
+    backgroundColor: '#E8F8F0',
+    borderRadius: 16,
     padding: 16,
     marginBottom: 14,
     borderWidth: 1.5,
@@ -365,7 +367,7 @@ const stijlen = StyleSheet.create({
   },
   bijzonderhedenInvoer: {
     backgroundColor: KLEUREN.inputBackground,
-    borderRadius: 10,
+    borderRadius: 12,
     padding: 12,
     fontSize: 15,
     color: KLEUREN.text,

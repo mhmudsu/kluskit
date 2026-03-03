@@ -136,7 +136,7 @@ const stijlen = StyleSheet.create({
   },
   optieActief: {
     borderColor: KLEUREN.primary,
-    backgroundColor: '#FFF3E0',
+    backgroundColor: '#E8F8F0',
   },
   optieTekst: {
     fontSize: 15,

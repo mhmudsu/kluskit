@@ -132,8 +132,8 @@ const stijlen = StyleSheet.create({
   },
   berekeningBalk: {
     flexDirection: 'row',
-    backgroundColor: '#FFF3E0',
-    borderRadius: 10,
+    backgroundColor: '#E8F8F0',
+    borderRadius: 12,
     padding: 12,
     marginTop: 12,
     gap: 20,

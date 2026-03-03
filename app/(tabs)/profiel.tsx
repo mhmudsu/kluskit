@@ -273,11 +273,14 @@ const stijlen = StyleSheet.create({
 
   sectie: {
     backgroundColor: KLEUREN.white,
-    borderRadius: 14,
+    borderRadius: 16,
     padding: 16,
     marginBottom: 16,
-    borderWidth: 1,
-    borderColor: KLEUREN.border,
+    shadowColor: '#1B2631',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.06,
+    shadowRadius: 8,
+    elevation: 3,
   },
   sectieKop: {
     fontSize: 16,
@@ -352,7 +355,7 @@ const stijlen = StyleSheet.create({
   },
   invoer: {
     backgroundColor: KLEUREN.background,
-    borderRadius: 10,
+    borderRadius: 12,
     padding: 14,
     fontSize: 15,
     color: KLEUREN.text,

@@ -476,7 +476,7 @@ const stijlen = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: KLEUREN.border,
   },
-  tabelRijEven: { backgroundColor: '#FAFAFA' },
+  tabelRijEven: { backgroundColor: '#F2F4F5' },
   tabelRijArbeid: {
     backgroundColor: '#FFF8F0',
     borderBottomWidth: 0,

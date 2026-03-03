@@ -46,11 +46,11 @@ const BASIS_CSS = `
   body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 13px;
-    color: #1A1A2E;
+    color: #1B2631;
     background: #fff;
   }
   .header {
-    background: #1A1A2E;
+    background: #1B2631;
     padding: 24px 32px;
     display: flex;
     justify-content: space-between;
@@ -59,7 +59,7 @@ const BASIS_CSS = `
   .header-links { display: flex; align-items: center; gap: 14px; }
   .logo-box {
     width: 50px; height: 50px;
-    background: #FF6B00;
+    background: #2ECC71;
     border-radius: 10px;
     display: flex; align-items: center; justify-content: center;
     font-size: 18px; font-weight: 900; color: #fff; letter-spacing: -1px;
@@ -67,7 +67,7 @@ const BASIS_CSS = `
   }
   .company-naam { font-size: 19px; font-weight: 700; color: #fff; margin-bottom: 3px; }
   .company-detail { font-size: 11px; color: rgba(255,255,255,0.65); margin-top: 2px; }
-  .accent { height: 4px; background: #FF6B00; }
+  .accent { height: 4px; background: #2ECC71; }
   .section-label {
     font-size: 9px; font-weight: 700; color: #999;
     letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;
@@ -148,10 +148,10 @@ export function genereerOfferteHTML(o: Offerte): string {
     </div>
     <div class="accent"></div>
     <div style="padding: 28px 32px;">
-      <div style="font-size:20px; font-weight:700; color:#1A1A2E; margin-bottom:20px;">
+      <div style="font-size:20px; font-weight:700; color:#1B2631; margin-bottom:20px;">
         Algemene Voorwaarden
       </div>
-      <div style="font-size:13px; color:#1A1A2E; line-height:1.8; white-space:pre-wrap;">${esc(p.algVoorwaarden ?? '')}</div>
+      <div style="font-size:13px; color:#1B2631; line-height:1.8; white-space:pre-wrap;">${esc(p.algVoorwaarden ?? '')}</div>
     </div>`
     : '';
 
@@ -165,18 +165,18 @@ export function genereerOfferteHTML(o: Offerte): string {
 
   .meta { display:flex; justify-content:space-between; align-items:flex-start; padding:22px 32px; border-bottom:1px solid #EEEEEE; }
   .offerte-label { font-size:9px; font-weight:700; color:#999; letter-spacing:2px; text-transform:uppercase; margin-bottom:4px; }
-  .offerte-nummer { font-size:28px; font-weight:700; color:#FF6B00; font-family:'Courier New',Courier,monospace; }
+  .offerte-nummer { font-size:28px; font-weight:700; color:#2ECC71; font-family:'Courier New',Courier,monospace; }
   .datum-blok { text-align:right; }
   .datum-label { font-size:9px; color:#999; letter-spacing:1px; text-transform:uppercase; margin-top:6px; margin-bottom:2px; }
-  .datum-waarde { font-size:13px; font-weight:600; color:#1A1A2E; }
-  .klant-naam { font-size:15px; font-weight:700; color:#1A1A2E; margin-bottom:3px; }
+  .datum-waarde { font-size:13px; font-weight:600; color:#1B2631; }
+  .klant-naam { font-size:15px; font-weight:700; color:#1B2631; margin-bottom:3px; }
   .klant-detail { font-size:12px; color:#666; margin-top:2px; }
-  .werk-tekst { font-size:13px; color:#1A1A2E; line-height:1.6; }
+  .werk-tekst { font-size:13px; color:#1B2631; line-height:1.6; }
 
   table { width:100%; border-collapse:collapse; }
-  thead th { font-size:9px; font-weight:700; color:#999; letter-spacing:1px; text-transform:uppercase; padding:6px 4px; border-bottom:2px solid #1A1A2E; text-align:left; }
+  thead th { font-size:9px; font-weight:700; color:#999; letter-spacing:1px; text-transform:uppercase; padding:6px 4px; border-bottom:2px solid #1B2631; text-align:left; }
   thead th.right { text-align:right; }
-  td { padding:9px 4px; font-size:12px; color:#1A1A2E; vertical-align:top; border-bottom:1px solid #F0F0F0; }
+  td { padding:9px 4px; font-size:12px; color:#1B2631; vertical-align:top; border-bottom:1px solid #F0F0F0; }
   td.right { text-align:right; font-family:'Courier New',Courier,monospace; white-space:nowrap; }
   tr.even td { background:#FAFAFA; }
   tr.arbeid td { background:#FFF8F0; border-bottom:none; }
@@ -187,24 +187,24 @@ export function genereerOfferteHTML(o: Offerte): string {
   table.totalen-tabel { width:auto; margin-left:auto; min-width:340px; }
   .totaal-rij td { border-bottom:none; padding:4px 8px; }
   .totaal-label { font-size:13px; color:#666; text-align:right; padding-right:16px !important; }
-  .totaal-waarde { font-size:13px; color:#1A1A2E; font-family:'Courier New',Courier,monospace; text-align:right !important; }
-  .totaal-label-bold { font-size:13px; font-weight:600; color:#1A1A2E; text-align:right; padding-right:16px !important; }
-  .totaal-waarde-bold { font-size:13px; font-weight:700; color:#1A1A2E; font-family:'Courier New',Courier,monospace; text-align:right !important; }
+  .totaal-waarde { font-size:13px; color:#1B2631; font-family:'Courier New',Courier,monospace; text-align:right !important; }
+  .totaal-label-bold { font-size:13px; font-weight:600; color:#1B2631; text-align:right; padding-right:16px !important; }
+  .totaal-waarde-bold { font-size:13px; font-weight:700; color:#1B2631; font-family:'Courier New',Courier,monospace; text-align:right !important; }
   .divider-dun { border:none; border-top:1px solid #EEEEEE; margin:4px 0; }
-  .divider-dik { border:none; border-top:2px solid #1A1A2E; margin:6px 0; }
+  .divider-dik { border:none; border-top:2px solid #1B2631; margin:6px 0; }
   .totaal-eind-rij { background:#FFF5EE; border-radius:6px; }
   .totaal-eind-rij td { padding:10px 12px; border:none; }
-  .totaal-eind-label { font-size:15px; font-weight:700; color:#1A1A2E; text-align:right; padding-right:20px !important; }
-  .totaal-eind-waarde { font-size:26px; font-weight:700; color:#FF6B00; font-family:'Courier New',Courier,monospace; text-align:right !important; white-space:nowrap; }
+  .totaal-eind-label { font-size:15px; font-weight:700; color:#1B2631; text-align:right; padding-right:20px !important; }
+  .totaal-eind-waarde { font-size:26px; font-weight:700; color:#2ECC71; font-family:'Courier New',Courier,monospace; text-align:right !important; white-space:nowrap; }
 
   .voorwaarden { padding:18px 32px; }
   .vw-item { display:flex; gap:8px; margin-top:6px; }
-  .vw-bullet { color:#FF6B00; font-size:14px; line-height:1.5; flex-shrink:0; }
+  .vw-bullet { color:#2ECC71; font-size:14px; line-height:1.5; flex-shrink:0; }
   .vw-tekst { font-size:11px; color:#666; line-height:1.6; }
 
-  .footer { margin-top:32px; background:#F5F5F0; padding:14px 32px; display:flex; justify-content:space-between; align-items:center; border-top:1px solid #E0E0E0; }
+  .footer { margin-top:32px; background:#F2F4F5; padding:14px 32px; display:flex; justify-content:space-between; align-items:center; border-top:1px solid #D5D8DC; }
   .footer-tekst { font-size:10px; color:#AAA; }
-  .footer-merk { font-size:10px; font-weight:700; color:#1A1A2E; opacity:0.35; }
+  .footer-merk { font-size:10px; font-weight:700; color:#1B2631; opacity:0.35; }
 </style>
 </head>
 <body>

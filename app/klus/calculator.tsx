@@ -315,8 +315,8 @@ const stijlen = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
-    backgroundColor: '#FFF3E0',
-    borderRadius: 10,
+    backgroundColor: '#E8F8F0',
+    borderRadius: 12,
     padding: 12,
     marginBottom: 14,
     borderLeftWidth: 3,
@@ -326,11 +326,14 @@ const stijlen = StyleSheet.create({
 
   sectie: {
     backgroundColor: KLEUREN.white,
-    borderRadius: 14,
+    borderRadius: 16,
     padding: 16,
     marginBottom: 12,
-    borderWidth: 1,
-    borderColor: KLEUREN.border,
+    shadowColor: '#1B2631',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.06,
+    shadowRadius: 8,
+    elevation: 3,
   },
   sectieKop: { fontSize: 15, fontWeight: '700', color: KLEUREN.text, marginBottom: 14 },
 

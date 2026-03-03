@@ -1,14 +1,16 @@
 export const KLEUREN = {
-  primary: '#FF6B00',
-  secondary: '#1A1A2E',
-  background: '#F5F5F0',
-  success: '#2ECC71',
-  warning: '#F39C12',
-  error: '#E74C3C',
-  text: '#1A1A2E',
-  textSecondary: '#666666',
+  primary: '#2ECC71',        // groen — knoppen, accenten, actief
+  primaryDark: '#1B2631',    // donker slate — headers, nav bar
+  primaryLight: '#27AE60',   // donkerder groen — hover/pressed
+  secondary: '#1B2631',      // donker slate (alias voor primaryDark)
+  background: '#F2F4F5',     // lichtgrijs achtergrond
+  success: '#2ECC71',        // groen
+  warning: '#F39C12',        // amber
+  error: '#E74C3C',          // rood
+  text: '#1B2631',           // donker slate
+  textSecondary: '#5D6D7E',  // medium grijs
   white: '#FFFFFF',
-  border: '#E0E0E0',
+  border: '#D5D8DC',         // lichtgrijs border
   cardBackground: '#FFFFFF',
-  inputBackground: '#FAFAFA',
+  inputBackground: '#F2F4F5',
 } as const;

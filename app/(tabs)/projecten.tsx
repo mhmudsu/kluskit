@@ -120,11 +120,13 @@ const stijlen = StyleSheet.create({
   },
   projectKaart: {
     backgroundColor: KLEUREN.white,
-    borderRadius: 14,
+    borderRadius: 16,
     padding: 16,
-    borderWidth: 1,
-    borderColor: KLEUREN.border,
-    elevation: 2,
+    shadowColor: '#1B2631',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.06,
+    shadowRadius: 8,
+    elevation: 3,
   },
   projectHeader: {
     flexDirection: 'row',
