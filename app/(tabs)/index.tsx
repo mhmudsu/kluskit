@@ -1,5 +1,5 @@
 import { StyleSheet, View, Text, ScrollView, Pressable } from 'react-native';
-import { Link } from 'expo-router';
+import { router } from 'expo-router';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { KLEUREN } from '../../constants/kleuren';
 import { useKlusStore } from '../../stores/klusStore';
@@ -18,70 +18,58 @@ export default function HomeScherm() {
       </View>
 
       {/* Hoofdactie knop */}
-      <Link href="/klus/invoer" asChild>
-        <Pressable style={stijlen.hoofdKnop}>
-          <MaterialCommunityIcons name="calculator-variant" size={32} color={KLEUREN.white} />
-          <View style={stijlen.hoofdKnopTekst}>
-            <Text style={stijlen.hoofdKnopTitel}>Nieuwe Klus Berekenen</Text>
-            <Text style={stijlen.hoofdKnopSubtitel}>Materialenlijst in seconden</Text>
-          </View>
-          <MaterialCommunityIcons name="chevron-right" size={28} color={KLEUREN.white} />
-        </Pressable>
-      </Link>
+      <Pressable style={stijlen.hoofdKnop} onPress={() => router.push('/klus/invoer')}>
+        <MaterialCommunityIcons name="calculator-variant" size={32} color={KLEUREN.white} />
+        <View style={stijlen.hoofdKnopTekst}>
+          <Text style={stijlen.hoofdKnopTitel}>Nieuwe Klus Berekenen</Text>
+          <Text style={stijlen.hoofdKnopSubtitel}>Materialenlijst in seconden</Text>
+        </View>
+        <MaterialCommunityIcons name="chevron-right" size={28} color={KLEUREN.white} />
+      </Pressable>
 
       {/* Camera scan banner */}
-      <Link href="/klus/camera" asChild>
-        <Pressable style={stijlen.cameraBanner}>
-          <View style={stijlen.calcBannerLinks}>
-            <MaterialCommunityIcons name="camera-outline" size={22} color={KLEUREN.white} />
-            <View style={stijlen.calcBannerTeksten}>
-              <Text style={[stijlen.calcBannerTitel, { color: KLEUREN.white }]}>
-                Scan ruimte met camera
-              </Text>
-              <Text style={[stijlen.calcBannerSubtitel, { color: 'rgba(255,255,255,0.8)' }]}>
-                AI herkent ruimte, afmetingen en ondergrond
-              </Text>
-            </View>
+      <Pressable style={stijlen.cameraBanner} onPress={() => router.push('/klus/camera')}>
+        <View style={stijlen.calcBannerLinks}>
+          <MaterialCommunityIcons name="camera-outline" size={22} color={KLEUREN.white} />
+          <View style={stijlen.calcBannerTeksten}>
+            <Text style={[stijlen.calcBannerTitel, { color: KLEUREN.white }]}>
+              Scan ruimte met camera
+            </Text>
+            <Text style={[stijlen.calcBannerSubtitel, { color: 'rgba(255,255,255,0.8)' }]}>
+              AI herkent ruimte, afmetingen en ondergrond
+            </Text>
           </View>
-          <MaterialCommunityIcons name="chevron-right" size={20} color={KLEUREN.white} />
-        </Pressable>
-      </Link>
+        </View>
+        <MaterialCommunityIcons name="chevron-right" size={20} color={KLEUREN.white} />
+      </Pressable>
 
       {/* Snelle berekening banner */}
-      <Link href="/klus/calculator" asChild>
-        <Pressable style={stijlen.calcBanner}>
-          <View style={stijlen.calcBannerLinks}>
-            <MaterialCommunityIcons name="lightning-bolt" size={22} color={KLEUREN.primary} />
-            <View style={stijlen.calcBannerTeksten}>
-              <Text style={stijlen.calcBannerTitel}>Snelle Berekening</Text>
-              <Text style={stijlen.calcBannerSubtitel}>Direct resultaat, geen AI nodig</Text>
-            </View>
+      <Pressable style={stijlen.calcBanner} onPress={() => router.push('/klus/calculator')}>
+        <View style={stijlen.calcBannerLinks}>
+          <MaterialCommunityIcons name="lightning-bolt" size={22} color={KLEUREN.primary} />
+          <View style={stijlen.calcBannerTeksten}>
+            <Text style={stijlen.calcBannerTitel}>Snelle Berekening</Text>
+            <Text style={stijlen.calcBannerSubtitel}>Direct resultaat, geen AI nodig</Text>
           </View>
-          <MaterialCommunityIcons name="chevron-right" size={20} color={KLEUREN.primary} />
-        </Pressable>
-      </Link>
+        </View>
+        <MaterialCommunityIcons name="chevron-right" size={20} color={KLEUREN.primary} />
+      </Pressable>
 
       {/* Snelle acties */}
       <Text style={stijlen.sectieLabel}>Snelle Acties</Text>
       <View style={stijlen.actieTegels}>
-        <Link href="/klus/invoer" asChild>
-          <Pressable style={stijlen.actieTegel}>
-            <MaterialCommunityIcons name="calculator-variant" size={32} color={KLEUREN.primary} />
-            <Text style={stijlen.actieTitelTekst}>AI Berekening</Text>
-          </Pressable>
-        </Link>
-        <Link href="/klus/calculator" asChild>
-          <Pressable style={stijlen.actieTegel}>
-            <MaterialCommunityIcons name="lightning-bolt" size={32} color={KLEUREN.primary} />
-            <Text style={stijlen.actieTitelTekst}>Snelle Calc</Text>
-          </Pressable>
-        </Link>
-        <Link href="/(tabs)/offerte" asChild>
-          <Pressable style={stijlen.actieTegel}>
-            <MaterialCommunityIcons name="file-document-edit" size={32} color={KLEUREN.primary} />
-            <Text style={stijlen.actieTitelTekst}>Offertes</Text>
-          </Pressable>
-        </Link>
+        <Pressable style={stijlen.actieTegel} onPress={() => router.push('/klus/invoer')}>
+          <MaterialCommunityIcons name="calculator-variant" size={32} color={KLEUREN.primary} />
+          <Text style={stijlen.actieTitelTekst}>AI Berekening</Text>
+        </Pressable>
+        <Pressable style={stijlen.actieTegel} onPress={() => router.push('/klus/calculator')}>
+          <MaterialCommunityIcons name="lightning-bolt" size={32} color={KLEUREN.primary} />
+          <Text style={stijlen.actieTitelTekst}>Snelle Calc</Text>
+        </Pressable>
+        <Pressable style={stijlen.actieTegel} onPress={() => router.push('/(tabs)/offerte')}>
+          <MaterialCommunityIcons name="file-document-edit" size={32} color={KLEUREN.primary} />
+          <Text style={stijlen.actieTitelTekst}>Offertes</Text>
+        </Pressable>
       </View>
 
       {/* Recente projecten */}
