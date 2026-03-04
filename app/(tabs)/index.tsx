@@ -1,10 +1,11 @@
 import { StyleSheet, View, Text, ScrollView, Pressable } from 'react-native';
-import { router } from 'expo-router';
+import { useRouter } from 'expo-router';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { KLEUREN } from '../../constants/kleuren';
 import { useKlusStore } from '../../stores/klusStore';
 
 export default function HomeScherm() {
+  const router = useRouter();
   const { projecten } = useKlusStore();
   const recenteProjecten = projecten.slice(0, 3);
 

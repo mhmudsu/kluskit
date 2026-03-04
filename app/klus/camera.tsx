@@ -8,7 +8,7 @@ import {
   Image,
   ScrollView,
 } from 'react-native';
-import { router } from 'expo-router';
+import { useRouter } from 'expo-router';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { KLEUREN } from '../../constants/kleuren';
 import { useKlusStore } from '../../stores/klusStore';
@@ -42,6 +42,7 @@ const KLUS_LABELS: Record<string, string> = {
 };
 
 export default function CameraSchermWeb() {
+  const router = useRouter();
   const { setKlusType, setAfmeting, setOndergrond, setRuimteType, setFotoAnalyseResultaat } =
     useKlusStore();
   const [fotoUri, setFotoUri] = useState<string | null>(null);

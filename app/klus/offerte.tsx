@@ -145,7 +145,7 @@ export default function OfferteInvoerScherm() {
       klantTelefoon: klantTelefoon.trim(),
       klantEmail: klantEmail.trim(),
       werkbeschrijving: werkbeschrijving.trim(),
-      materialen: materiaalResultaat.materialen,
+      materialen: materiaalResultaat?.materialen ?? [],
       totaalMateriaalkosten: inkoop,
       materiaalMarge,
       materiaalVerkoopprijs: materiaalVerkoop,
